@@ -25,7 +25,7 @@ RecyclerView.Adapter<AdaptadorRecycler.ViewHolderDatos>(){
         holder.des.text = listaDatos[position].descripcion
         Glide.with(context)
             .load(listaDatos[position].imagen)
-            .override(400,400)
+            .error(R.drawable.inprogress)
             .into(holder.imagen)
     }
 

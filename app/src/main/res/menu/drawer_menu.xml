@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_global"
+            android:title="Noticias del Mundo"
+            android:icon="@drawable/ic_global"
+            android:checked="true"/>
+
+        <item
+            android:id="@+id/nav_buscar"
+            android:title="Búsqueda"
+            android:icon="@drawable/ic_baseline_manage_search_24"/>
+    </group>
+
+    <item android:title="Por Categorías">
+        <menu>
+            <group android:checkableBehavior="single">
+
+                <item
+                    android:id="@+id/nav_arte"
+                    android:title="Arte y Cultura"
+                    android:icon="@drawable/ic_arte"/>
+
+                <item
+                    android:id="@+id/nav_games"
+                    android:title="Entretenimiento"
+                    android:icon="@drawable/ic_games"/>
+                <item
+                    android:id="@+id/nav_viajes"
+                    android:title="Viajes"
+                    android:icon="@drawable/ic_traveling"/>
+                <item
+                    android:id="@+id/nav_deportes"
+                    android:title="Deportes"
+                    android:icon="@drawable/ic_deportes"/>
+                <item
+                    android:id="@+id/nav_salud"
+                    android:title="Bienestar y Salud"
+                    android:icon="@drawable/ic_salud"/>
+                <item
+                    android:id="@+id/nav_economia"
+                    android:title="Economía"
+                    android:icon="@drawable/ic_economy"/>
+
+            </group>
+        </menu>
+    </item>
+</menu>

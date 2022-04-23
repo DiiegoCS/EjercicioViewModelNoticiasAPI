@@ -12,6 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EjercicioViewModelNoticiasAPI">
         <activity
+            android:name=".view.BuscarNoticias"
+            android:exported="false" />
+        <activity
+            android:name=".view.NoticiasGenerales"
+            android:exported="false" />
+        <activity
+            android:name=".view.NoticiaExpandida"
+            android:exported="false" />
+        <activity
             android:name=".view.MainActivity"
             android:exported="true">
             <intent-filter>

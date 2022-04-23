@@ -3,8 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Finanzas/AndroidStudioProjects/EjercicioViewModelNoticiasAPI/app/src/main/res/layout/activity_buscar_noticias.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Finanzas/AndroidStudioProjects/EjercicioViewModelNoticiasAPI/app/src/main/res/layout/activity_main.xml" value="0.25052083333333336" />
+        <entry key="..\:/Users/Finanzas/AndroidStudioProjects/EjercicioViewModelNoticiasAPI/app/src/main/res/layout/activity_noticia_expandida.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Finanzas/AndroidStudioProjects/EjercicioViewModelNoticiasAPI/app/src/main/res/layout/activity_noticias_generales.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Finanzas/AndroidStudioProjects/EjercicioViewModelNoticiasAPI/app/src/main/res/layout/items_recycler.xml" value="0.25052083333333336" />
+        <entry key="..\:/Users/Finanzas/AndroidStudioProjects/EjercicioViewModelNoticiasAPI/app/src/main/res/layout/nav_header.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Finanzas/AndroidStudioProjects/EjercicioViewModelNoticiasAPI/app/src/main/res/layout/toolbar.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Finanzas/AndroidStudioProjects/EjercicioViewModelNoticiasAPI/app/src/main/res/menu/drawer_menu.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>

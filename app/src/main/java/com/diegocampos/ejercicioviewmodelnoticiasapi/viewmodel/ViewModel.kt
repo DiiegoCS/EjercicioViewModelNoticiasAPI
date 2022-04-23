@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 class ViewModel: ViewModel() {
 
     val noticias: MutableLiveData<Noticias> = MutableLiveData()
-    val interactor = NoticiasInteractor()
+    private val interactor = NoticiasInteractor()
 
     fun onBtnTraerNoticias(){
         CoroutineScope(Dispatchers.IO).launch {

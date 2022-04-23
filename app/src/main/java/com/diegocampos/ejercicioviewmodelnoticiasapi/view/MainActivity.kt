@@ -1,52 +1,76 @@
 package com.diegocampos.ejercicioviewmodelnoticiasapi.view
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
-import android.view.View
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.diegocampos.ejercicioviewmodelmvvmapi.repository.retrofit.Noticias
+import android.view.MenuItem
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AppCompatActivity
 import com.diegocampos.ejercicioviewmodelnoticiasapi.R
 import com.diegocampos.ejercicioviewmodelnoticiasapi.databinding.ActivityMainBinding
-import com.diegocampos.ejercicioviewmodelnoticiasapi.repository.recycler.AdaptadorRecycler
-import com.diegocampos.ejercicioviewmodelnoticiasapi.repository.recycler.EtiquetaNoticia
-import com.diegocampos.ejercicioviewmodelnoticiasapi.viewmodel.ViewModel
-import com.google.gson.Gson
+import com.google.android.material.navigation.NavigationView
 
-class MainActivity : AppCompatActivity() {
-    private lateinit var mainViewModel: ViewModel
+
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+
     private lateinit var binding: ActivityMainBinding
+    private lateinit var toogle: ActionBarDrawerToggle
+    private lateinit var myToolbar: androidx.appcompat.widget.Toolbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        mainViewModel = ViewModelProvider(this).get(ViewModel::class.java)
-        observar()
+       binding.myNavigationView.setNavigationItemSelectedListener(this)
 
-        binding.btnTraerNoticias.setOnClickListener {
-            binding.progressBar.visibility = View.VISIBLE
-                mainViewModel.onBtnTraerNoticias()
+        myToolbar = findViewById(R.id.myToolbar)
+
+        setSupportActionBar(myToolbar)
+
+        toogle = setDrawerToogle()
+        binding.myDrawerLayout.addDrawerListener(toogle)
+    }
+
+    private fun setDrawerToogle(): ActionBarDrawerToggle {
+        return ActionBarDrawerToggle(
+            this,
+            binding.myDrawerLayout,
+            myToolbar,
+            R.string.drawer_open,
+            R.string.drawer_close
+        )
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        toogle.onConfigurationChanged(newConfig)
+    }
+
+    override fun onPostCreate( savedInstanceState: Bundle?) {
+        super.onPostCreate(savedInstanceState)
+        toogle.syncState()
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return if (toogle.onOptionsItemSelected(item)) {
+            true
+        } else super.onOptionsItemSelected(item)
+    }
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+
+        var intent: Intent= Intent()
+        when (item.itemId) {
+            R.id.nav_global ->  intent= Intent(applicationContext, NoticiasGenerales::class.java)
+            R.id.nav_buscar ->  intent= Intent(applicationContext, BuscarNoticias::class.java)
         }
+        startActivity(intent)
+
+        title = item.title //para mostrar el título
+        binding.myDrawerLayout.closeDrawers() //para cerrar drawer
+
+        return true
     }
 
-    private fun observar() {
-        mainViewModel.noticias.observe(this, Observer {
 
-
-            binding.myRecyclerView.layoutManager =
-                LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
-            var listaRcycler: ArrayList<EtiquetaNoticia> = ArrayList()
-
-            for((i,v) in it.articles.withIndex()){
-                listaRcycler.add( EtiquetaNoticia(it.articles[i].title, it.articles[i].urlToImage, it.articles[i].description))
-            }
-
-            var adaptador:AdaptadorRecycler = AdaptadorRecycler(applicationContext, listaRcycler)
-            binding.myRecyclerView.adapter = adaptador
-            binding.progressBar.visibility = View.GONE
-        })
-    }
 }
